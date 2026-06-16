@@ -1,0 +1,54 @@
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fondo negro general */
+body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+}
+
+/* Contenedor principal de toda la página */
+.pagina {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Título superior */
+.pagina__titulo {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Divide la página en dos: sección principal y panel derecho */
+.pagina__contenido {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+}
+
+/* Sección izquierda ocupa todo el espacio disponible */
+.seccion-principal {
+  flex: 1;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* Panel derecho tiene ancho fijo */
+.panel-guardadas {
+  width: 280px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+}
