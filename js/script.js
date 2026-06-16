@@ -229,6 +229,9 @@ function dibujarListaColores() {
 
     // Clic en el item — copia el color
     item.addEventListener('click', () => {
+      colorSeleccionado = colorSeleccionado === index ? -1 : index;  // ← agregar esto
+      dibujarRueda();        // ← agregar esto
+      dibujarListaColores(); // ← agregar esto
       copiarColor(h, s, l);
     });
 
