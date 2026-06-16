@@ -393,32 +393,73 @@ const botonHex = document.querySelectorAll('.alternador-copia__boton')[0];
 const botonHsl = document.querySelectorAll('.alternador-copia__boton')[1];
 
 // Cambia el formato de copia y actualiza la interfaz
+// Reemplaza tu función actual por esta:
 function cambiarFormato(formato) {
   formatoCopia = formato;
 
-  // Actualiza el estilo activo de los botones
+  // 1. Manejo de clases en el body para el "tema" global
+  document.body.classList.remove('tema-hex', 'tema-hsl');
+  document.body.classList.add(formato === 'hex' ? 'tema-hex' : 'tema-hsl');
+
+  // 2. Manejo de botones (tu lógica actual)
+  botonHex.classList.remove('alternador-copia__boton--activo-hex', 'alternador-copia__boton--activo-hsl');
+  botonHsl.classList.remove('alternador-copia__boton--activo-hex', 'alternador-copia__boton--activo-hsl');
+
   if (formato === 'hex') {
-    botonHex.classList.add('alternador-copia__boton--activo');
-    botonHsl.classList.remove('alternador-copia__boton--activo');
+    botonHex.classList.add('alternador-copia__boton--activo-hex');
   } else {
-    botonHsl.classList.add('alternador-copia__boton--activo');
-    botonHex.classList.remove('alternador-copia__boton--activo');
+    botonHsl.classList.add('alternador-copia__boton--activo-hsl');
   }
 
-  // Actualiza la lista de colores para mostrar el formato correcto
+  // 3. Refrescar la vista
   dibujarListaColores();
+  // Si tu rueda también debe cambiar de color de resaltado, llama a:
+  dibujarRueda(); 
 }
 
 // Eventos de los botones
 botonHex.addEventListener('click', () => cambiarFormato('hex'));
 botonHsl.addEventListener('click', () => cambiarFormato('hsl'));
 
-
 // ============================================
-// COPIAR COLOR AL HACER CLIC EN LA LISTA
+// NOTIFICACIÓN FLOTANTE
 // ============================================
 
-// Copia un color individual al portapapeles al hacer clic en el item
+function mostrarNotificacion(h, s, l, texto) {
+  const anterior = document.querySelector('.notificacion');
+  if (anterior) anterior.remove();
+
+  const notificacion = document.createElement('div');
+  notificacion.classList.add('notificacion');
+
+  // Círculo con el color
+  const circulo = document.createElement('div');
+  circulo.classList.add('notificacion__circulo');
+  circulo.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+
+  // Texto del código
+  const codigo = document.createElement('span');
+  codigo.classList.add('notificacion__codigo');
+  codigo.textContent = texto;
+
+  notificacion.appendChild(circulo);
+  notificacion.appendChild(codigo);
+
+  // Color azul para HEX, rosado para HSL
+  if (formatoCopia === 'hex') {
+    notificacion.classList.add('notificacion--hex');
+  } else {
+    notificacion.classList.add('notificacion--hsl');
+  }
+
+  document.body.appendChild(notificacion);
+  setTimeout(() => notificacion.classList.add('notificacion--visible'), 10);
+  setTimeout(() => {
+    notificacion.classList.remove('notificacion--visible');
+    setTimeout(() => notificacion.remove(), 400);
+  }, 2500);
+}
+
 function copiarColor(h, s, l) {
   const texto = formatoCopia === 'hex'
     ? hslAHex(h, s, l)
@@ -433,7 +474,7 @@ function copiarColor(h, s, l) {
   document.execCommand('copy');
   document.body.removeChild(area);
 
-  alert(`Color copiado: ${texto}`);
+  mostrarNotificacion(h, s, l, texto);
 }
 
 // ============================================
@@ -443,4 +484,6 @@ function copiarColor(h, s, l) {
 generarPaleta();
 dibujarRueda();
 dibujarListaColores();
+dibujarPaletasGuardadas();
+cambiarFormato('hex');
 console.log('Colores generados:', coloresActuales);

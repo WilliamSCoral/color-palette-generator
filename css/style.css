@@ -1,3 +1,28 @@
+:root {
+  --color-hex: #00bcd4; /* Azul actual */
+  --color-hsl: #e91e8c; /* Rosado deseado */
+}
+
+/* Aplicamos el color basado en la clase del body */
+body.tema-hex {
+  --color-activo: var(--color-hex);
+}
+
+body.tema-hsl {
+  --color-activo: var(--color-hsl);
+}
+
+/* Ahora, actualiza tus clases existentes para usar --color-activo */
+.alternador-copia__boton--activo-hex {
+  background-color: var(--color-hex);
+  color: #ffffff;
+}
+
+.alternador-copia__boton--activo-hsl {
+  background-color: var(--color-hsl);
+  color: #ffffff;
+}
+
 /* Reset básico */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -113,8 +138,13 @@ body {
   border-radius: 0 6px 6px 0;
 }
 
-.alternador-copia__boton--activo {
+.alternador-copia__boton--activo-hex {
   background-color: #00bcd4;
+  color: #ffffff;
+}
+
+.alternador-copia__boton--activo-hsl {
+  background-color: #e91e8c;
   color: #ffffff;
 }
 
@@ -276,4 +306,51 @@ body {
   transform: scale(1.08);
   outline: 2px solid #ffffff;
   transition: transform 0.2s ease;
+}
+
+/* NOTIFICACIÓN FLOTANTE */
+.notificacion {
+  position: fixed;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px 10px 10px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: top 0.4s ease;
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+
+.notificacion--visible {
+  top: 16px;
+}
+
+.notificacion--hex {
+  background-color: #00bcd4;
+  color: #ffffff;
+}
+
+.notificacion--hsl {
+  background-color: #e91e8c;
+  color: #ffffff;
+}
+
+.notificacion__circulo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+
+.notificacion__codigo {
+  font-size: 15px;
+  letter-spacing: 1px;
 }
