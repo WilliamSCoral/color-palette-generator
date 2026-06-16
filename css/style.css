@@ -52,3 +52,144 @@ body {
   border-radius: 12px;
   padding: 20px;
 }
+
+/* BARRA DE CONTROLES */
+.barra-controles {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background-color: #222222;
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+}
+
+.barra-controles__etiqueta {
+  font-size: 13px;
+  color: #aaaaaa;
+  margin-right: 8px;
+}
+
+.barra-controles__selector {
+  background-color: #2e2e2e;
+  color: #ffffff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.barra-controles__tamano,
+.barra-controles__modo-copia {
+  display: flex;
+  align-items: center;
+}
+
+.barra-controles__acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* BOTONES HEX / HSL */
+.alternador-copia__boton {
+  background-color: #2e2e2e;
+  color: #aaaaaa;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.alternador-copia__boton:first-of-type {
+  border-radius: 6px 0 0 6px;
+}
+
+.alternador-copia__boton:last-of-type {
+  border-radius: 0 6px 6px 0;
+}
+
+.alternador-copia__boton--activo {
+  background-color: #00bcd4;
+  color: #ffffff;
+}
+
+/* BOTONES GIRAR Y GUARDAR */
+.boton-girar {
+  background-color: #2e2e2e;
+  color: #ffffff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.boton-guardar {
+  background-color: #2e2e2e;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ÁREA DE RUEDA */
+.area-rueda {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+/* LISTA DE COLORES CON CANDADOS */
+.lista-colores {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lista-colores__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #222222;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.lista-colores__muestra {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: #a6d714;
+}
+
+.lista-colores__hex {
+  font-size: 13px;
+  color: #ffffff;
+  flex: 1;
+}
+
+.lista-colores__candado {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* RUEDA SVG */
+.rueda-contenedor {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rueda {
+  width: min(420px, 100%);
+  height: min(420px, 100%);
+}

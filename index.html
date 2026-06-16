@@ -16,10 +16,12 @@
 
         <section class="seccion-principal">
 
-          <div>
-            <div>
-              <label>Tamaño de paleta:</label>
-              <select>
+          <!-- BARRA DE CONTROLES -->
+          <div class="barra-controles">
+
+            <div class="barra-controles__tamano">
+              <label class="barra-controles__etiqueta">Tamaño de paleta:</label>
+              <select class="barra-controles__selector">
                 <option>4 colores</option>
                 <option>5 colores</option>
                 <option selected>6 colores</option>
@@ -29,30 +31,34 @@
               </select>
             </div>
 
-            <div>
-              <label>Modo Copiar:</label>
-              <button>HEX</button>
-              <button>HSL</button>
+            <div class="barra-controles__modo-copia">
+              <label class="barra-controles__etiqueta">Modo Copiar:</label>
+              <button class="alternador-copia__boton alternador-copia__boton--activo">HEX</button>
+              <button class="alternador-copia__boton">HSL</button>
             </div>
 
-            <div>
-              <button>Girar Rueda</button>
-              <button>💾</button>
+            <div class="barra-controles__acciones">
+              <button class="boton-girar">Girar Rueda</button>
+              <button class="boton-guardar">💾</button>
             </div>
+
           </div>
 
-          <div>
-            <ul>
-              <li>
-                <div></div>
-                <span>#A6D714</span>
-                <button>🔓</button>
+          <!-- ÁREA DE RUEDA + LISTA -->
+          <div class="area-rueda">
+
+            <ul class="lista-colores">
+              <li class="lista-colores__item">
+                <div class="lista-colores__muestra"></div>
+                <span class="lista-colores__hex">#A6D714</span>
+                <button class="lista-colores__candado">🔓</button>
               </li>
             </ul>
 
-            <div>
-              <svg viewBox="-1.1 -1.1 2.2 2.2"></svg>
+            <div class="rueda-contenedor">
+              <svg class="rueda" viewBox="-1.1 -1.1 2.2 2.2"></svg>
             </div>
+
           </div>
 
         </section>
