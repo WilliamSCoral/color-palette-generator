@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de Paletas Circular</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <div>
+
+      <h1>Generador de Paletas Circular</h1>
+
+      <div>
+
+        <section>
+
+          <div>
+            <div>
+              <label>Tamaño de paleta:</label>
+              <select>
+                <option>4 colores</option>
+                <option>5 colores</option>
+                <option selected>6 colores</option>
+                <option>7 colores</option>
+                <option>8 colores</option>
+                <option>9 colores</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Modo Copiar:</label>
+              <button>HEX</button>
+              <button>HSL</button>
+            </div>
+
+            <div>
+              <button>Girar Rueda</button>
+              <button>💾</button>
+            </div>
+          </div>
+
+          <div>
+            <ul>
+              <li>
+                <div></div>
+                <span>#A6D714</span>
+                <button>🔓</button>
+              </li>
+            </ul>
+
+            <div>
+              <svg viewBox="-1.1 -1.1 2.2 2.2"></svg>
+            </div>
+          </div>
+
+        </section>
+
+        <aside>
+          <h2>Paletas Guardadas</h2>
+          <ul>
+            <li>
+              <div>
+                <span>Paleta (5 colores)</span>
+                <div>
+                  <button>📋</button>
+                  <button>🗑️</button>
+                </div>
+              </div>
+              <div></div>
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
