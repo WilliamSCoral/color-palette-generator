@@ -388,6 +388,7 @@ function dibujarListaColores() {
     const candado = document.createElement('button');
     candado.classList.add('lista-colores__candado');
     candado.textContent = color.bloqueado ? '🔒' : '🔓';
+    candado.title = color.bloqueado ? 'Desbloquear color' : 'Bloquear color';
 
     candado.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -410,7 +411,7 @@ function dibujarListaColores() {
     item.appendChild(texto);
     item.appendChild(candado);
     lista.appendChild(item);
-  });
+  });  
 }
 
 
@@ -478,11 +479,13 @@ function dibujarPaletasGuardadas() {
     const botonCopiar = document.createElement('button');
     botonCopiar.classList.add('boton-copiar-paleta');
     botonCopiar.textContent = '📋';
+    botonCopiar.title = 'Copiar colores de la paleta';
     botonCopiar.addEventListener('click', () => copiarPaleta(paleta));
 
     const botonEliminar = document.createElement('button');
     botonEliminar.classList.add('boton-eliminar-paleta');
     botonEliminar.textContent = '🗑️';
+    botonEliminar.title = 'Eliminar paleta';
     botonEliminar.addEventListener('click', () => {
       paletasGuardadas.splice(index, 1);
       localStorage.setItem('paletasGuardadas', JSON.stringify(paletasGuardadas));
