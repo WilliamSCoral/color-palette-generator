@@ -626,31 +626,45 @@ if (botonHslMovil)
 // ============================================
 
 function mostrarNotificacion(h, s, l, texto) {
-  const anterior = document.querySelector(".notificacion");
+  const anterior = document.querySelector('.notificacion');
   if (anterior) anterior.remove();
 
-  const notificacion = document.createElement("div");
-  notificacion.classList.add("notificacion");
+  const notificacion = document.createElement('div');
+  notificacion.classList.add('notificacion');
 
-  const circulo = document.createElement("div");
-  circulo.classList.add("notificacion__circulo");
+  // Fondo del color seleccionado
+  notificacion.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+  notificacion.style.color = colorContraste(h, s, l);
+
+  const circulo = document.createElement('div');
+  circulo.classList.add('notificacion__circulo');
   circulo.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+  circulo.style.border = `2px solid ${colorContraste(h, s, l) === '#ffffff' ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)'}`;
 
-  const codigo = document.createElement("span");
-  codigo.classList.add("notificacion__codigo");
+  const etiqueta = document.createElement('span');
+  etiqueta.style.fontSize = '11px';
+  etiqueta.style.opacity = '0.8';
+  etiqueta.style.display = 'block';
+  etiqueta.textContent = 'Color copiado';
+
+  const codigo = document.createElement('span');
+  codigo.classList.add('notificacion__codigo');
   codigo.textContent = texto;
 
-  notificacion.appendChild(circulo);
-  notificacion.appendChild(codigo);
+  const textos = document.createElement('div');
+  textos.style.display = 'flex';
+  textos.style.flexDirection = 'column';
+  textos.style.gap = '2px';
+  textos.appendChild(etiqueta);
+  textos.appendChild(codigo);
 
-  notificacion.classList.add(
-    formatoCopia === "hex" ? "notificacion--hex" : "notificacion--hsl",
-  );
+  notificacion.appendChild(circulo);
+  notificacion.appendChild(textos);
 
   document.body.appendChild(notificacion);
-  setTimeout(() => notificacion.classList.add("notificacion--visible"), 10);
+  setTimeout(() => notificacion.classList.add('notificacion--visible'), 10);
   setTimeout(() => {
-    notificacion.classList.remove("notificacion--visible");
+    notificacion.classList.remove('notificacion--visible');
     setTimeout(() => notificacion.remove(), 400);
   }, 2500);
 }
@@ -867,6 +881,15 @@ modal?.addEventListener("click", (e) => {
     modal.classList.remove("modal-guardadas--visible");
   }
 });
+
+function colorContraste(h, s, l) {
+  // Convierte HSL a luminancia percibida y decide blanco o negro
+  const lNorm = l / 100;
+  const sNorm = s / 100;
+  const c = (1 - Math.abs(2 * lNorm - 1)) * sNorm;
+  const luminancia = lNorm - c * 0.5;
+  return luminancia > 0.45 ? '#000000' : '#ffffff';
+}
 
 // ============================================
 // INICIO
